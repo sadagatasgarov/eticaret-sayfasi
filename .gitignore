@@ -1,3 +1,4 @@
 *tlf
-venv
-media
+venv/
+media/
+ad/
