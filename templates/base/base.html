@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'base/components/head.html' %}
+    <title>Document </title>
+</head>
+<body>
+{% include 'base/components/nav.html' %}
+    {% comment %} {% include 'home/carousel.html' %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+
+            <div class="col-sm-4">
+            {% include 'product/product.html' %}
+            </div>
+            
+        </div>   
+    </div> {% endcomment %}
+
+    {% block content %}
+    
+    {% endblock content %}
+    {% include 'base/components/footer.html' %}
+    {% include 'base/components/footer_scripts.html' %}
+</body>
+</html>
