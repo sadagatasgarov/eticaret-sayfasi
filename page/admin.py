@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Page
+from .models import Page, Carousel
 
 # Register your models here.
 
@@ -24,6 +24,10 @@ class PageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Page, PageAdmin)
+admin.site.register(Carousel)
+
+
+
 
 # @admin.register(Page)
 # class PageAdmin(admin.ModelAdmin):
@@ -31,3 +35,8 @@ admin.site.register(Page, PageAdmin)
 #     list_display_link = ['title']
 #     class Meta:
 #         model = Page
+
+# @admin.register(Carousel)
+# class CarouselAdmin(admin.ModelAdmin):
+#     class Meta:
+#         model = Carousel
