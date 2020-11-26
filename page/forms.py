@@ -10,4 +10,5 @@ class CarouselModelForm(forms.ModelForm):
         fields = [
             'title',
             'cover_image',
+            'status'
         ]

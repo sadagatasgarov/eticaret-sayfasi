@@ -1,7 +1,5 @@
 # Migrations:
-
-db.sqlite3
-
 venv/*
 
 media/*
+db.sqlite3
