@@ -37,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #Third Party Apps:
 
+    # Third Party Apps:
 
-    #My Apps:
+    # My Apps:
     'cart',
     'page',
     'product',
@@ -62,7 +61,9 @@ ROOT_URLCONF = 'kaft_clone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,20 +130,34 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
 ]
 
-# Media files
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Trello: TO_DO Plugin Test
+
+# python manage.py startapp cart
+# python manage.py startapp page
+# python manage.py startapp product
 
 
+"""
+TODO List:
+
+yonetici :
+- carousel
+page
+product
+category
+order
 
 
-# --My Apps--:
-# Page
-# Product
-# Cart
+kullanici:
+kullanici kaydi
+adres kaydi
+kredi karti islemi / iyzico -> SUCCESS - ERROR -> 100
+siparis takibi
 
-
+cart -> items
+"""

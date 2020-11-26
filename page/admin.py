@@ -1,42 +1,33 @@
 from django.contrib import admin
 from .models import Page, Carousel
 
-# Register your models here.
-
 
 class PageAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    list_display = (
+        'pk',
+        'title',
+        'slug',
+        'status', 
+        'updated_at',
+    )
+    list_filter = ('status', )
+    list_editable = (
+        'title',
+        'status', 
+    )
+
+
+class CarouselAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
         'title',
-        'created_at',
-        'updated_at',
-        'slug',
+        'cover_image',
+        'status',
     ]
-
-    list_filter = [
-        'status'
-    ]
-
-    search_fields = ['title']
-
-    list_display_links = ['title']
+    list_filter = ['status', ]
+    list_editable = list_filter
 
 
 admin.site.register(Page, PageAdmin)
-admin.site.register(Carousel)
-
-
-
-
-# @admin.register(Page)
-# class PageAdmin(admin.ModelAdmin):
-#     list_display = ['title', 'created_at']
-#     list_display_link = ['title']
-#     class Meta:
-#         model = Page
-
-# @admin.register(Carousel)
-# class CarouselAdmin(admin.ModelAdmin):
-#     class Meta:
-#         model = Carousel
+admin.site.register(Carousel, CarouselAdmin)

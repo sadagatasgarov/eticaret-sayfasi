@@ -2,56 +2,20 @@
 <html lang="en">
 <head>
     {% include 'base/components/head.html' %}
-    <title>Document </title>
+    
+    <title>kaftClone</title>
 </head>
 <body>
-{% include 'base/components/nav.html' %}
-    {% comment %} {% include 'home/carousel.html' %}
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-
-            <div class="col-sm-4">
-            {% include 'product/product.html' %}
-            </div>
-            
-        </div>   
-    </div> {% endcomment %}
+    {% include 'base/components/message.html' %}
+    {% include 'base/components/nav.html' %}
 
     {% block content %}
-    
-    {% endblock content %}
+    {% endblock %}
+
     {% include 'base/components/footer.html' %}
     {% include 'base/components/footer_scripts.html' %}
+
+    {% block script %}
+    {% endblock %}
 </body>
 </html>
