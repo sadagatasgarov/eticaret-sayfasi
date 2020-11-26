@@ -26,5 +26,25 @@ def carousel_create(request):
         print(form)
         if form.is_valid():
             form.save()
-        messages.success(request, 'Birseyler eklendi ama ne oldu bilemiyorum')
+        messages.success(request, 'Carousele resim  eklendi taslak')
+    return render(request, 'manage/carousel_create.html', context)
+
+
+def carousel_update(request):
+    form= CarouselModelForm()
+    context = {
+        'form':form
+    }
+    item = Carousel.objects.first()
+    context['form'] = CarouselModelForm(instance=item)
+
+    if request.method == 'POST':
+        print(request.POST)
+        print(request.FILES.get('cover_image'))
+        # create code is deleted
+        form = CarouselModelForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            form.save()
+        messages.success(request, 'Guncellendi Carousel guncellendi')
     return render(request, 'manage/carousel_create.html', context)
