@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12 ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Guncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for carousel in form %}
+                    <tr>
+                        <th scope="row">{{carousel.id}}</th>
+                        <td>{{carousel.title}}</td>
+                        <td> 
+                        {% if carousel.cover_image.url %}
+                        <img src="{{carousel.cover_image.url}}" alt="..."   class="d-block w-100" >
+                        {% else %}
+                        <p>Boyle bir data yok</p>
+                        {% endif %}
+                        
+                         </td>
+                        <td>{{carousel.status}}</td>
+                        <td><a href="{{carousel.id}}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

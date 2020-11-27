@@ -3,14 +3,17 @@ from django.contrib import messages
 from .models import Carousel
 from .forms import CarouselModelForm
 
-
+# kullaici icin
 def index(request):
     context = dict()
-    context['images'] = Carousel.objects.filter(status="published")
+    context['images'] = Carousel.objects.filter(status="published").exclude(cover_image = '')
     # context['images'] = images
     return render(request, 'home/index.html', context)
 
 
+
+
+#adminler icin
 # stuff not checked
 def carousel_create(request):
     context = dict()
@@ -30,7 +33,17 @@ def carousel_create(request):
     return render(request, 'manage/carousel_create.html', context)
 
 
-def carousel_update(request):
+def carousel_list(request):
+    form = CarouselModelForm()
+    context = {
+        'form' : form
+    }
+    context['form'] = Carousel.objects.all()
+    return render(request, 'manage/carousel_list.html', context)
+    
+
+
+def carousel_update(request, pk):
     form= CarouselModelForm()
     context = {
         'form':form
