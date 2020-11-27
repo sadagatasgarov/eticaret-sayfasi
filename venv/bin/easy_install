@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' /home/sadagat/Desktop/kodluyoruz-org-python-ve-django-egitimi-e109eac113387a8bc0590298c6631aecfbaf6e91/kaft_clone/venv/bin/python "$0" "$@"
-' '''
+#!/home/sadagat/Desktop/eticaret-sayfasi/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

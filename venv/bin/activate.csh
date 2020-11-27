@@ -8,7 +8,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/home/sadagat/Desktop/kodluyoruz-org-python-ve-django-egitimi-e109eac113387a8bc0590298c6631aecfbaf6e91/kaft_clone/venv"
+setenv VIRTUAL_ENV "/home/sadagat/Desktop/eticaret-sayfasi/venv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"

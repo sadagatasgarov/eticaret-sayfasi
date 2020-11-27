@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/sadagat/Desktop/kodluyoruz-org-python-ve-django-egitimi-e109eac113387a8bc0590298c6631aecfbaf6e91/kaft_clone/venv"
+set -gx VIRTUAL_ENV "/home/sadagat/Desktop/eticaret-sayfasi/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
