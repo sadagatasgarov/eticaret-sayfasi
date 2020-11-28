@@ -10,6 +10,12 @@ def index(request):
     # context['images'] = images
     return render(request, 'home/index.html', context)
 
+def manage_list(request):
+
+    context = {}
+
+    return render(request, 'manage/manage.html', context)
+
 
 
 
@@ -57,6 +63,7 @@ def carousel_update(request, pk):
         if form.is_valid():
             form.save()
         messages.success(request, 'Guncellendi Carousel guncellendi')
+        # return redirect('carousel_list')
         return redirect('carousel_update', pk)
     return render(request, 'manage/carousel_create.html', context)
 
@@ -72,3 +79,4 @@ def carousel_update(request, pk):
         form = CarouselModelForm(request, instance=instance)
     return form
  """
+
