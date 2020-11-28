@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from .models import Carousel
 from .forms import CarouselModelForm
@@ -38,7 +38,7 @@ def carousel_list(request):
     context = {
         'form' : form
     }
-    context['form'] = Carousel.objects.all()
+    context['form'] = Carousel.objects.all().order_by('-pk')
     return render(request, 'manage/carousel_list.html', context)
     
 
@@ -48,16 +48,27 @@ def carousel_update(request, pk):
     context = {
         'form':form
     }
-    item = Carousel.objects.first()
+    item = Carousel.objects.get(pk=pk)
     context['form'] = CarouselModelForm(instance=item)
 
     if request.method == 'POST':
-        print(request.POST)
-        print(request.FILES.get('cover_image'))
-        # create code is deleted
-        form = CarouselModelForm(request.POST, request.FILES)
+        form = CarouselModelForm(request.POST, request.FILES, instance=item)
         print(form)
         if form.is_valid():
             form.save()
         messages.success(request, 'Guncellendi Carousel guncellendi')
+        return redirect('carousel_update', pk)
     return render(request, 'manage/carousel_create.html', context)
+
+#bu da alternativ yoll
+""" def carousel_form(request=None, instance=None):
+    if request:
+        form = CarouselModelForm(
+            request.POST,
+            request.FILES,
+            instance=instance
+        )
+    else:  
+        form = CarouselModelForm(request, instance=instance)
+    return form
+ """
