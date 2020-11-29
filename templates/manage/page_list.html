@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="">
+        <a href="{% url 'page_create' %}" class="btn btn-danger">Page_create</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Cover Image</th>
+                        <th scope="col">Content</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item.title}}</td>
+                        <td>{{item.slug}}</td>
+                        <td>
+                            {% if item.cover_image %}
+                            <img src="{{item.cover_image.url}}" alt="..." class="d-block w-100">
+                            {% else %}
+                            <p>Boyle bir data yok</p>
+                            {% endif %}
+                        </td>
+                        <td>{{item.content}}</td>
+                        <td>{{item.status}}</td>
+                        <td><a href="#">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
