@@ -19,9 +19,10 @@ class Category(models.Model):
     createt_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 #Product
 class Product(models.Model):
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    cateory = models.ForeignKey(Category,on_delete=models.CASCADE)
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(
@@ -29,14 +30,17 @@ class Product(models.Model):
         default="",
     )
     content = models.TextField() 
+    
     cover_image = models.ImageField(
         upload_to='page',
         null=True,
         blank=True,
     )
-    scock = models.PositiveSmallIntegerField()
+    stock = models.PositiveSmallIntegerField()
+    price = models.FloatField()
+    
     status = models.CharField(
-        default=DEFAULT_STATUS, 
+        default=DEFAULT_STATUS,
         choices=STATUS,
         max_length=10,
     )
