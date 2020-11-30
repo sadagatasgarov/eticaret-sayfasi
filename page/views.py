@@ -3,8 +3,11 @@ from django.contrib import messages
 from .models import (Carousel, Page)
 from .forms import CarouselModelForm, PageModelForm
 from django.utils.text import slugify
+from django.contrib.admin.views.decorators import staff_member_required
 
 # kullanici icin
+
+
 def index(request):
     context = dict()
     context['images'] = Carousel.objects.filter(
@@ -26,39 +29,52 @@ def page_list(request):
 
 def page_create(request):
     context = dict()
-    context['title'] = 'Paga create form'
+    context['title'] = 'Page create form'
     context['form'] = PageModelForm()
-   
+
     if request.method == 'POST':
         form = PageModelForm(request.POST, request.FILES)
         if form.is_valid():
             slg = form.save(commit=False)
-            slg.slug = slugify(slg.title)
+            slg.slug = slugify(slg.title.replace('ı', 'i'))
             slg.save()
+
         messages.success(request, 'Page bir seyler eklendi  eklendi taslak')
-    return render(request, 'manage/carousel_form.html', context)
+        return redirect('page_list')
+    return render(request, 'manage/form.html', context)
 
 
-# def carousel_update(request, pk):
-#     form = CarouselModelForm()
-#     context = {
-#         'form': form
-#     }
-#     item = Carousel.objects.get(pk=pk)
-#     context['form'] = CarouselModelForm(instance=item)
+@staff_member_required
+def page_update(request, pk):
+    form = PageModelForm()
+    context = {
+        'form': form
+    }
 
-#     if request.method == 'POST':
-#         form = CarouselModelForm(request.POST, request.FILES, instance=item)
-#         print(form)
-#         if form.is_valid():
-#             form.save()
-#         messages.success(request, 'Guncellendi Carousel guncellendi')
-#         # return redirect('carousel_list')
-#         return redirect('carousel_update', pk)
-#     return render(request, 'manage/carousel_form.html', context)
+    item = Page.objects.get(pk=pk)
+    context['title'] = f'{item.title} -id: {item.pk} Carousel create form'
+    context['form'] = PageModelForm(instance=item)
+
+    if request.method == 'POST':
+        form = PageModelForm(request.POST, request.FILES, instance=item)
+        print(form)
+        if form.is_valid():
+            slg = form.save(commit=False)
+            if item.slug == '':
+                slg.slug = slugify(slg.title.replace('ı', 'i'))
+            slg.save()
+        messages.success(request, 'Guncellendi Carousel guncellendi')
+        # return redirect('carousel_list')
+        return redirect('page_update', pk)
+    return render(request, 'manage/form.html', context)
 
 
+def page_delete(request, pk):
+    item = Page.objects.get(pk=pk)
+    item.status = "deleted"
+    item.save()
 
+    return redirect('page_list')
 
 
 # adminler icin
@@ -76,6 +92,7 @@ def carousel_list(request):
 
 def carousel_create(request):
     context = dict()
+    context['title'] = 'Carousel create form'
     context['form'] = CarouselModelForm()
     # item = Carousel.objects.first()
     # context['form'] = CarouselModelForm(instance=item)
@@ -89,7 +106,7 @@ def carousel_create(request):
         if form.is_valid():
             form.save()
         messages.success(request, 'Carousele resim  eklendi taslak')
-    return render(request, 'manage/carousel_form.html', context)
+    return render(request, 'manage/form.html', context)
 
 
 def carousel_update(request, pk):
@@ -97,7 +114,9 @@ def carousel_update(request, pk):
     context = {
         'form': form
     }
+
     item = Carousel.objects.get(pk=pk)
+    context['title'] = f'{item.title} -id: {item.pk} Carousel create form'
     context['form'] = CarouselModelForm(instance=item)
 
     if request.method == 'POST':
@@ -108,7 +127,7 @@ def carousel_update(request, pk):
         messages.success(request, 'Guncellendi Carousel guncellendi')
         # return redirect('carousel_list')
         return redirect('carousel_update', pk)
-    return render(request, 'manage/carousel_form.html', context)
+    return render(request, 'manage/form.html', context)
 
 
 # bu da alternativ yoll

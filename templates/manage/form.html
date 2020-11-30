@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+
+
+    <div class="row">
+        <div class="col-sm-12 ">
+            <h2>{{title}}</h2>
+            <hr>
+            <div class="">
+                <a href="{% url 'carousel_list' %}" class="btn btn-danger">Carousel_list</a>
+            </div>
+            <br>
+            <div class="">
+                <a href="{% url 'page_list' %}" class="btn btn-danger">Page_list</a>
+            </div>
+            <hr>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <hr>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
