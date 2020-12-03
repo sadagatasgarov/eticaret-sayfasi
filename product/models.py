@@ -3,6 +3,11 @@ from page.models import STATUS, DEFAULT_STATUS
 # Create your models here.
 # Category
 
+GENDER_CHOICE = [
+    ("men","Erkek"),
+    ("women","Kadin"),
+    ("unisex","UniSex"),
+]
 
 class Category(models.Model):
     title = models.CharField(max_length=200)
@@ -16,11 +21,17 @@ class Category(models.Model):
         choices=STATUS,
         max_length=10,
     )
+
+    gender = models.CharField(
+        max_length=6,
+        default = 'unisex',
+        choices = GENDER_CHOICE
+        )
     createt_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.pk +1000}-{self.gender} - {self.title}"
 
 
 # Product

@@ -3,18 +3,17 @@ from .views import (
     # Manage
     manage_list,
 
-
     # Page
     page_list,
     page_create,
     page_update,
     page_delete,
 
-
     # Carousel
     carousel_create,
     carousel_update,
     carousel_list,
+
 )
 
 

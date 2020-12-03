@@ -138,7 +138,7 @@ TODO List:
 
 yonetici :
 - carousel
-page
+- page
 product
 category
 order

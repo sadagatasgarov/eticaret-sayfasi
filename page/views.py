@@ -5,6 +5,8 @@ from .forms import CarouselModelForm, PageModelForm
 from django.utils.text import slugify
 from django.contrib.admin.views.decorators import staff_member_required
 
+from product.models import Category
+
 # kullanici icin
 
 
@@ -13,6 +15,10 @@ def index(request):
     context['images'] = Carousel.objects.filter(
         status="published").exclude(cover_image='')
     # context['images'] = images
+
+    context['categories'] = Category.objects.filter(
+        status='published'
+    )
     return render(request, 'home/index.html', context)
 
 
