@@ -32,6 +32,7 @@ class ProductAdmin(admin.ModelAdmin):
         'slug',
         'status',
         'updated_at',
+        'cover_image',
     )
     list_filter = ('status', )
     list_editable = (
