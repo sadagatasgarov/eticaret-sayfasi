@@ -21,6 +21,10 @@ class ShoppingCartItem(models.Model):
     created_at = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True, auto_now_add=False)
 
+    def __str__(self):
+        return f"{self.product.title}-{self.product.price} TL"
+    
+
 
 class ShoppingCart(models.Model):
     user = models.ForeignKey(

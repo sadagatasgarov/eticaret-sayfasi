@@ -1,16 +1,16 @@
-<div class="card mb-3 ">
-         {% if item.cover_image %}
-        <img class=" w-100" src="{{ item.cover_image.url }}" alt="Card image">
-        {% endif %}
-        <div class="card-body">
-          <p class="card-text">
-            {{item.title}}
-          </p>
-        </div>
-        
-        <div class="card-body">
-          <span>{{item.price}} TL</span>
-          <a href="#" class="card-link float-right">Sepete ekle</a>
-        </div>  
+<div class="card mb-3">
+  {% if item.cover_image %}
+  <img src="{{ item.cover_image.url }}" alt="Card image" class="w-100">
+  {% endif %}
+  <div class="card-body">
+    <p class="card-text">
+      {{ item.title }}
+    </p>
+  </div>
+  
+  <div class="card-body">
+    <span>{{ item.price }} TL</span>
+    <a href="#" class="card-link float-right">Sepete Ekle</a>
+  </div>
+  
 </div>
-      
