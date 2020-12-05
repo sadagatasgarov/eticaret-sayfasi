@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from .models import (Carousel, Page)
 from .forms import CarouselModelForm, PageModelForm
@@ -8,18 +8,19 @@ from django.contrib.admin.views.decorators import staff_member_required
 from product.models import Category
 
 # kullanici icin
-
+STATUS = 'published'
 
 def index(request):
     context = dict()
     context['images'] = Carousel.objects.filter(
-        status="published").exclude(cover_image='')
+        status=STATUS).exclude(cover_image='')
     # context['images'] = images
 
-    context['categories'] = Category.objects.filter(
-        status='published'
-    )
+    # context['categories'] = Category.objects.filter(
+    #     status='published'
+    # )
     return render(request, 'home/index.html', context)
+
 
 
 def manage_list(request):
@@ -49,6 +50,10 @@ def page_create(request):
         return redirect('page_list')
     return render(request, 'manage/form.html', context)
 
+def page_show(request, page_slug):
+    context =dict()
+    context['page'] = get_object_or_404(Page, slug = page_slug)
+    return render(request, 'page/page.html', context)
 
 @staff_member_required
 def page_update(request, pk):

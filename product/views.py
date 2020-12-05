@@ -7,9 +7,9 @@ def category_show(request, category_slug):
     context['category'] = get_object_or_404(Category, slug = category_slug)
     
     #Nav icin
-    context['categories'] = Category.objects.filter(
-        status = 'published'
-    )
+    # context['categories'] = Category.objects.filter(
+    #     status = 'published'
+    # )
     
     context['items'] = Product.objects.filter(
         category = context['category'],

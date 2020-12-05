@@ -1,6 +1,6 @@
-<div class="card mb-3">
+<div class="card mb-3 ">
          {% if item.cover_image %}
-        <img src="{{ item.cover_image.url }}" alt="Card image">
+        <img class=" w-100" src="{{ item.cover_image.url }}" alt="Card image">
         {% endif %}
         <div class="card-body">
           <p class="card-text">
@@ -9,9 +9,8 @@
         </div>
         
         <div class="card-body">
-          <a href="#" class="card-link">{{item.price}}</a>
-          <a href="#" class="card-link">{{item.stock}}</a>
-        </div>
-        
-      </div>
+          <span>{{item.price}} TL</span>
+          <a href="#" class="card-link float-right">Sepete ekle</a>
+        </div>  
+</div>
       
